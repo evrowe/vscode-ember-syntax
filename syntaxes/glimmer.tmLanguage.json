@@ -1,0 +1,239 @@
+{
+	"$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
+	"name": "Glimmer",
+	"patterns": [
+		{ "include": "#glimmer-unescaped-expression" },
+    { "include": "#glimmer-comment" },
+    { "include": "#glimmer-expression" },
+    { "include": "#html-tag" },
+    { "include": "#html-comment" },
+    { "include": "#entities" }
+	],
+	"repository": {
+		"string-double-quoted": {
+			"name": "string.quoted.double.glimmer",
+			"begin": "\"",
+			"beginCaptures": {
+				"0": "punctuation.definition.string.begin.glimmer"
+			},
+			"end": "\"",
+			"endCaptures": {
+				"0": "punctuation.definition.string.end.glimmer"
+			},
+			"patterns": [
+				{
+					"name": "constant.character.escape.glimmer",
+					"match": "\\\\\""
+				}
+			]
+		},
+		"string-single-quoted": {
+			"name": "string.quoted.single.glimmer",
+			"begin": "'",
+			"beginCaptures": {
+				"0": "punctuation.definition.string.begin.glimmer"
+			},
+			"end": "'",
+			"endCaptures": {
+				"0": "punctuation.definition.string.end.glimmer"
+			},
+			"patterns": [
+				{
+					"name": "constant.character.escape.glimmer",
+					"match": "\\\\'"
+				}
+			]
+		},
+		"boolean": {
+			"comment": "matches booleans in html tags, eg; true",
+			"match": "true|false",
+			"captures": {
+				"0": { "name": "constant.language.glimmer" }
+			},
+			"patterns": []
+		},
+
+
+
+
+
+		"glimmer-unescaped-expression": {
+			"comment": "Capture unescaped expressions of triple curlies",
+      "name": "entity.unescaped.expression.glimmer",
+      "begin": "{{{",
+      "end": "}}}",
+      "captures": {
+        "0": { "name": "punctuation.definition.block.unescaped.glimmer" }
+      },
+      "patterns": [
+        { "include": "#glimmer-subexp" }
+      ]
+		},
+		"glimmer-comment": {
+      "name": "comment.block.glimmer",
+      "begin": "{{!(--)*",
+      "note": "capture group of -- used to handle matching end tag",
+      "end": "(\\1)}}",
+      "captures": {
+        "0": { "name": "punctuation.definition.block.comment.glimmer" }
+      },
+			"patterns": []
+    },
+		"glimmer-expression": {
+      "name": "entity.expression.glimmer",
+      "begin": "({{)(#)*(\/)*(?:(if|unless|with|each-in|each|else if|else|eq|not-eq|and|or|xor|gt|gte|link-to|lt|lte|is-array|is-equal|action|component|concat|debugger| get|hash|loc|log|mount|mut|outlet|partial|query-params|render|unbound)(?!-)\\b|([a-zA-Z0-9_/.-]+))",
+      "end": "(}})",
+      "captures": {
+        "1": { "name": "punctuation.definition.expression.glimmer" },
+        "2": { "name": "punctuation.definition.expression.glimmer" },
+        "3": { "name": "punctuation.definition.expression.glimmer" },
+        "4": { "name": "support.function.builtin" },
+        "5": { "name": "entity.name.function.expression.glimmer" }
+      },
+      "patterns": [
+        { "include": "#as-keyword" },
+        { "include": "#as-params" },
+        { "include": "#glimmer-subexp" },
+				{ "include": "#string-single-quoted" },
+        { "include": "#string-double-quoted" },
+				{ "include": "#boolean" },
+				{ "include": "#glimmer-parameter-name" },
+				{ "include": "#glimmer-parameter-value" }
+      ]
+    },
+		"glimmer-subexp": {
+      "comment": "matches any subexpressions within glimmer expressions: {{something someValue=(helper someProp)}}",
+      "name": "entity.subexpression.glimmer",
+      "begin": "(\\()([a-zA-Z0-9.-]+)",
+      "end": "(\\))",
+      "captures": {
+        "1": { "name": "punctuation.definition.subexpression.glimmer" },
+        "2": { "name": "support.function.name.subexpression.glimmer" }
+      },
+      "patterns": [
+        { "include": "#glimmer-subexp" },
+				{ "include": "#string-single-quoted" },
+        { "include": "#string-double-quoted" },
+				{ "include": "#boolean" },
+				{ "include": "#glimmer-parameter-name" },
+				{ "include": "#glimmer-parameter-value" }
+      ]
+    },
+
+		"as-keyword": {
+      "comment": "matches the 'as' when creating params: as |someParam|",
+      "name": "support.function.builtin.glimmer",
+      "match": "\\s\\b(as)\\b(?=\\s\\|)",
+			"patterns": []
+    },
+    "as-params": {
+      "comment": "Matches the params inside pipes: as |someParam|",
+      "name": "keyword.block-params.glimmer",
+      "begin": "(?<!\\|)(\\|)",
+      "beginCaptures": {
+        "1": { "name": "constant.other.symbol.begin.glimmer" }
+      },
+      "end": "(\\|)(?!\\|)",
+      "endCaptures": {
+        "1": { "name": "constant.other.symbol.end.glimmer" }
+      },
+      "patterns": [
+        { "include": "#variable" }
+      ]
+    },
+		"glimmer-parameter-value": {
+      "match": "\\b([a-zA-Z0-9:_.-]+)\\b(?!=)",
+      "captures": {
+        "1": { "name": "variable.parameter.value.glimmer" }
+      },
+			"patterns": []
+    },
+		"glimmer-parameter-name": {
+      "match": "\\b([a-zA-Z0-9:_.-]+)(=)",
+      "captures": {
+				"1": { "name": "variable.parameter.name.glimmer" },
+        "2": { "name": "punctuation.definition.expression.glimmer" }
+      },
+			"patterns": []
+    },
+		"variable": {
+      "name": "variable.other.glimmer",
+      "match": "\\b([a-zA-Z0-9-_]+)\\b",
+			"patterns": []
+    },
+
+
+
+
+
+		"html-comment": {
+      "comment": "match on any html comment block eg: <!-- -->",
+      "begin": "<!--",
+      "captures": {
+        "0": { "name": "punctuation.definition.comment.html.glimmer" }
+      },
+      "end": "--\\s*>",
+      "name": "comment.block.html.glimmer",
+      "patterns": [
+        {
+          "match": "--",
+          "name": "invalid.illegal.bad-comments-or-CDATA.html.glimmer"
+        }
+      ]
+    },
+    "html-tag": {
+      "comment": "match any html tag, handle as separate matches on open/close tags",
+      "begin": "(<\\/?)(([a-zA-Z0-9:-]+))\\b",
+      "beginCaptures": {
+        "1": { "name": "punctuation.definition.tag.html.glimmer" },
+        "2": { "name": "entity.name.tag.html.glimmer" }
+      },
+      "end": "(\\/?)(>)",
+      "endCaptures": {
+        "1": { "name": "punctuation.definition.tag.html.glimmer" },
+        "2": { "name": "punctuation.definition.tag.html.glimmer" }
+      },
+      "name": "meta.tag.any.glimmer",
+			"patternsComment": "The order of includes is IMPORTANT. By including strings BEFORE attributes, we can use a fairly broad regex for matching attributes. Any strings or glimmer expressions should aleady have been matched before hitting that match!",
+      "patterns": [
+        { "include": "#glimmer-unescaped-expression" },
+        { "include": "#glimmer-comment" },
+        { "include": "#glimmer-expression" },
+				{ "include": "#string-double-quoted" },
+        { "include": "#string-single-quoted" },
+        { "include": "#html-attribute" },
+				{ "include": "#boolean" }
+      ]
+    },
+	
+		"html-attribute": {
+      "comment": "match html attributes and flags id as special attribute, eg: class=",
+      "match": "\\s\\b(id)(=)|\\s\\b([a-zA-Z0-9:_.-]+)(=)?",
+      "captures": {
+        "1": { "name": "entity.other.attribute-name.id.html.glimmer" },
+				"2": { "name": "punctuation.separator.key-value.html.glimmer" },
+        "3": { "name": "entity.other.attribute-name.glimmer" },
+        "4": { "name": "punctuation.separator.key-value.html.glimmer" }
+      },
+			"patterns": []
+    },
+    "entities": {
+      "comment": "Eg: &amp;",
+      "patterns": [
+        {
+          "captures": {
+            "1": { "name": "punctuation.definition.entity.html.glimmer" },
+            "3": { "name": "punctuation.definition.entity.html.glimmer" }
+          },
+          "match": "(&)([a-zA-Z0-9]+|#[0-9]+|#x[0-9a-fA-F]+)(;)",
+          "name": "constant.character.entity.html.glimmer"
+        },
+        {
+          "match": "&",
+          "name": "invalid.illegal.bad-ampersand.html.glimmer"
+        }
+      ]
+    }
+	},
+	"scopeName": "source.glimmer"
+}
