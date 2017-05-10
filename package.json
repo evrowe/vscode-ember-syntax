@@ -21,7 +21,7 @@
     "contributes": {
         "languages": [
             {
-                "id": "glimmer",
+                "id": "handlebars",
                 "aliases": [
                     "Glimmer",
                     "glimmer"
@@ -32,10 +32,10 @@
                 "configuration": "./language-configuration.json"
             },
             {
-                "id": "javascriptglimmer",
+                "id": "javascript",
                 "aliases": [
                     "JavaScript (Babel+Glimmer)",
-                    "javascriptglimmer"
+                    "javascript"
                 ],
                 "extensions": [
                     ".js"
@@ -43,10 +43,10 @@
                 "configuration": "./javascript-language-configuration.json"
             },
             {
-                "id": "typescriptglimmer",
+                "id": "typescript",
                 "aliases": [
                     "TypeScript (Glimmer)",
-                    "typescriptglimmer"
+                    "typescript"
                 ],
                 "extensions": [
                     ".ts"
@@ -61,7 +61,7 @@
                 "path": "./syntaxes/glimmer.tmLanguage.json"
             },
             {
-                "language": "javascriptglimmer",
+                "language": "javascript",
                 "scopeName": "source.js",
                 "path": "./syntaxes/javascriptglimmer.tmLanguage.json",
                 "embeddedLanguages": {
@@ -69,7 +69,7 @@
                 }
             },
             {
-                "language": "typescriptglimmer",
+                "language": "typescript",
                 "scopeName": "source.ts",
                 "path": "./syntaxes/typescriptglimmer.tmLanguage.json",
                 "embeddedLanguages": {
