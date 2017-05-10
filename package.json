@@ -2,7 +2,7 @@
     "name": "ember-syntax",
     "displayName": "Ember Syntax",
     "description": "Ember HTMLBars and Glimmer syntax highlighting",
-    "version": "0.1.0",
+    "version": "0.2.0",
     "publisher": "dhedgecock",
     "engines": {
         "vscode": "^1.10.0"
