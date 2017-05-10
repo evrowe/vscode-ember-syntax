@@ -2,7 +2,7 @@
     "name": "ember-syntax",
     "displayName": "Ember Syntax",
     "description": "Ember HTMLBars and Glimmer syntax highlighting",
-    "version": "0.0.1",
+    "version": "0.1.0",
     "publisher": "dhedgecock",
     "engines": {
         "vscode": "^1.10.0"
@@ -12,47 +12,70 @@
     ],
     "icon": "icon.png",
     "bugs": {
-      "url": "https://github.com/healthsparq/vscode-ember-syntax/issues"
+        "url": "https://github.com/healthsparq/vscode-ember-syntax/issues"
     },
     "repository": {
-      "type": "git",
-      "url": "https://github.com/healthsparq/vscode-ember-syntax"
+        "type": "git",
+        "url": "https://github.com/healthsparq/vscode-ember-syntax"
     },
     "contributes": {
-        "languages": [{
-            "id": "glimmer",
-            "aliases": ["Glimmer", "glimmer"],
-            "extensions": [".hbs"],
-            "configuration": "./language-configuration.json"
-        }, {
-            "id": "javascriptglimmer",
-            "aliases": ["JavaScript (Babel+Glimmer)", "javascriptglimmer"],
-            "extensions": [".js"],
-            "configuration": "./javascript-language-configuration.json"
-        }, {
-            "id": "typescriptglimmer",
-            "aliases": ["TypeScript (Glimmer)", "typescriptglimmer"],
-            "extensions": [".ts"],
-            "configuration": "./javascript-language-configuration.json"
-        }],
-        "grammars": [{
-            "language": "glimmer",
-            "scopeName": "source.glimmer",
-            "path": "./syntaxes/glimmer.tmLanguage.json"
-        }, {
-            "language": "javascriptglimmer",
-            "scopeName": "source.js",
-            "path": "./syntaxes/javascriptglimmer.tmLanguage.json",
-            "embeddedLanguages": {
-              "meta.source.glimmer": "glimmer"
+        "languages": [
+            {
+                "id": "glimmer",
+                "aliases": [
+                    "Glimmer",
+                    "glimmer"
+                ],
+                "extensions": [
+                    ".hbs"
+                ],
+                "configuration": "./language-configuration.json"
+            },
+            {
+                "id": "javascriptglimmer",
+                "aliases": [
+                    "JavaScript (Babel+Glimmer)",
+                    "javascriptglimmer"
+                ],
+                "extensions": [
+                    ".js"
+                ],
+                "configuration": "./javascript-language-configuration.json"
+            },
+            {
+                "id": "typescriptglimmer",
+                "aliases": [
+                    "TypeScript (Glimmer)",
+                    "typescriptglimmer"
+                ],
+                "extensions": [
+                    ".ts"
+                ],
+                "configuration": "./javascript-language-configuration.json"
             }
-        }, {
-            "language": "typescriptglimmer",
-            "scopeName": "source.ts",
-            "path": "./syntaxes/typescriptglimmer.tmLanguage.json",
-            "embeddedLanguages": {
-              "meta.source.glimmer": "glimmer"
+        ],
+        "grammars": [
+            {
+                "language": "glimmer",
+                "scopeName": "source.glimmer",
+                "path": "./syntaxes/glimmer.tmLanguage.json"
+            },
+            {
+                "language": "javascriptglimmer",
+                "scopeName": "source.js",
+                "path": "./syntaxes/javascriptglimmer.tmLanguage.json",
+                "embeddedLanguages": {
+                    "meta.source.glimmer": "glimmer"
+                }
+            },
+            {
+                "language": "typescriptglimmer",
+                "scopeName": "source.ts",
+                "path": "./syntaxes/typescriptglimmer.tmLanguage.json",
+                "embeddedLanguages": {
+                    "meta.source.glimmer": "glimmer"
+                }
             }
-        }]
+        ]
     }
 }
