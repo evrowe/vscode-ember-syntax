@@ -56,7 +56,7 @@
         ],
         "grammars": [
             {
-                "language": "glimmer",
+                "language": "handlebars",
                 "scopeName": "source.glimmer",
                 "path": "./syntaxes/glimmer.tmLanguage.json"
             },
@@ -65,7 +65,7 @@
                 "scopeName": "source.js",
                 "path": "./syntaxes/javascriptglimmer.tmLanguage.json",
                 "embeddedLanguages": {
-                    "meta.source.glimmer": "glimmer"
+                    "meta.source.glimmer": "handlebars"
                 }
             },
             {
@@ -73,7 +73,7 @@
                 "scopeName": "source.ts",
                 "path": "./syntaxes/typescriptglimmer.tmLanguage.json",
                 "embeddedLanguages": {
-                    "meta.source.glimmer": "glimmer"
+                    "meta.source.glimmer": "handlebars"
                 }
             }
         ]

@@ -5758,24 +5758,7 @@
         }
       },
       "patterns": [
-        {
-          "include": "#glimmer-unescaped-expression"
-        },
-        {
-          "include": "#glimmer-comment"
-        },
-        {
-          "include": "#glimmer-expression"
-        },
-        {
-          "include": "#html-tag"
-        },
-        {
-          "include": "#html-comment"
-        },
-        {
-          "include": "#entities"
-        }
+        { "include": "source.glimmer" }
       ]
     },
     "string-double-quoted": {

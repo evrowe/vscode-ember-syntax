@@ -3,7 +3,8 @@
 	"name": "Glimmer",
 	"patterns": [
 		{ "include": "#glimmer-unescaped-expression" },
-    { "include": "#glimmer-comment" },
+    { "include": "#glimmer-comment-block" },
+    { "include": "#glimmer-comment-inline" },
     { "include": "#glimmer-expression" },
     { "include": "#html-tag" },
     { "include": "#html-comment" },
@@ -69,11 +70,20 @@
         { "include": "#glimmer-subexp" }
       ]
 		},
-		"glimmer-comment": {
+		"glimmer-comment-block": {
       "name": "comment.block.glimmer",
-      "begin": "{{!(--)*",
+      "begin": "{{!(--)",
       "note": "capture group of -- used to handle matching end tag",
       "end": "(\\1)}}",
+      "captures": {
+        "0": { "name": "punctuation.definition.block.comment.glimmer" }
+      },
+			"patterns": []
+    },
+    "glimmer-comment-inline": {
+      "name": "comment.inline.glimmer",
+      "begin": "{{!",
+      "end": "}}",
       "captures": {
         "0": { "name": "punctuation.definition.block.comment.glimmer" }
       },
@@ -205,7 +215,7 @@
 				{ "include": "#boolean" }
       ]
     },
-	
+
 		"html-attribute": {
       "comment": "match html attributes and flags id as special attribute, eg: class=",
       "match": "\\s\\b(id)(=)|\\s\\b([a-zA-Z0-9:_.-]+)(=)?",
