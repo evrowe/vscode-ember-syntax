@@ -34,7 +34,7 @@
             {
                 "id": "javascript",
                 "aliases": [
-                    "JavaScript (Babel+Glimmer)",
+                    "JavaScript (Extended)",
                     "javascript"
                 ],
                 "extensions": [
@@ -45,7 +45,7 @@
             {
                 "id": "typescript",
                 "aliases": [
-                    "TypeScript (Glimmer)",
+                    "TypeScript (Extended)",
                     "typescript"
                 ],
                 "extensions": [
@@ -57,13 +57,13 @@
         "grammars": [
             {
                 "language": "handlebars",
-                "scopeName": "source.glimmer",
-                "path": "./syntaxes/glimmer.tmLanguage.json"
+                "scopeName": "source.handlebars",
+                "path": "./syntaxes/Glimmer.tmLanguage.json"
             },
             {
                 "language": "javascript",
                 "scopeName": "source.js",
-                "path": "./syntaxes/javascriptglimmer.tmLanguage.json",
+                "path": "./syntaxes/JavaScriptExtended.tmLanguage.json",
                 "embeddedLanguages": {
                     "meta.source.glimmer": "handlebars"
                 }
@@ -71,7 +71,7 @@
             {
                 "language": "typescript",
                 "scopeName": "source.ts",
-                "path": "./syntaxes/typescriptglimmer.tmLanguage.json",
+                "path": "./syntaxes/TypeScriptExtended.tmLanguage.json",
                 "embeddedLanguages": {
                     "meta.source.glimmer": "handlebars"
                 }
