@@ -3337,7 +3337,25 @@
           },
           "patterns": [
             {
+              "include": "#attention"
+            },
+            {
+              "include": "#handlebars-fenced-code-block"
+            },
+            {
+              "include": "#fenced-code-block"
+            },
+            {
+              "include": "#inline-code-block"
+            },
+            {
+              "include": "source.handlebars"
+            },
+            {
               "include": "#docblock"
+            },
+            {
+              "include": "#custom-tags"
             }
           ]
         },
@@ -3354,7 +3372,12 @@
             "0": {
               "name": "punctuation.definition.comment.ts"
             }
-          }
+          },
+          "patterns": [
+            {
+              "include": "#attention"
+            }
+          ]
         },
         {
           "begin": "(^[ \\t]+)?(?=//)",
@@ -3373,7 +3396,12 @@
                   "name": "punctuation.definition.comment.ts"
                 }
               },
-              "end": "(?=$)"
+              "end": "(?=$)",
+              "patterns": [
+                {
+                  "include": "#attention"
+                }
+              ]
             }
           ]
         }
@@ -4214,6 +4242,91 @@
           "include": "source.handlebars"
         }
       ]
+    },
+    "handlebars-fenced-code-block": {
+      "name": "markup.fenced_code.block.markdown.jsdoc",
+      "begin": "([`~]{3,})(handlebars|glimmer)",
+      "beginCaptures": {
+        "1": {
+          "name": "punctuation.definition.markdown.jsdoc"
+        },
+        "2": {
+          "name": "fenced_code.block.language"
+        }
+      },
+      "end": "(\\1)",
+      "endCaptures": {
+        "0": {
+          "name": "punctuation.definition.markdown.jsdoc"
+        }
+      },
+      "patterns": [
+        {
+          "include": "#docblock-punctuation"
+        },
+        {
+          "include": "source.handlebars"
+        }
+      ]
+    },
+    "fenced-code-block": {
+      "name": "markup.fenced_code.block.markdown.jsdoc",
+      "begin": "([`~]{3,})",
+      "beginCaptures": {
+        "0": {
+          "name": "punctuation.definition.markdown.jsdoc"
+        }
+      },
+      "end": "(\\1)",
+      "endCaptures": {
+        "0": {
+          "name": "punctuation.definition.markdown.jsdoc"
+        }
+      },
+      "patterns": [
+        {
+          "include": "#docblock-punctuation"
+        }
+      ]
+    },
+    "inline-code-block": {
+      "name": "markup.inline.raw.markdown.jsdoc",
+      "begin": "`",
+      "beginCaptures": {
+        "0": {
+          "name": "punctuation.definition.raw.markdown.jsdoc"
+        }
+      },
+      "end": "`",
+      "endCaptures": {
+        "0": {
+          "name": "punctuation.definition.raw.markdown.jsdoc"
+        }
+      },
+      "patterns": [
+        {
+          "include": "#docblock-punctuation"
+        }
+      ]
+    },
+    "custom-tags": {
+      "name": "storage.custom.class.jsdoc",
+      "match": "(@)\\S*",
+      "captures": {
+        "1": {
+          "name": "punctuation.definition.block.tag.jsdoc"
+        }
+      },
+      "patterns": []
+    },
+    "docblock-punctuation": {
+      "name": "comment.block.documentation.js",
+      "match": "^\\s*\\*",
+      "patterns": []
+    },
+    "attention": {
+      "name": "storage.type.class.${1:/downcase}",
+      "match": "@?(TODO|FIXME|CHANGED|XXX|IDEA|HACK|NOTE|REVIEW|NB|BUG|QUESTION|TEMP)\\b"
     }
   }
 }
