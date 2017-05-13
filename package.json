@@ -1,87 +1,87 @@
 {
-  "name": "ember-syntax",
-  "displayName": "Ember Syntax",
-  "description": "Ember HTMLBars and Glimmer syntax highlighting",
-  "version": "0.3.0",
-  "publisher": "dhedgecock",
-  "engines": {
-    "vscode": "^1.10.0"
-  },
-  "scripts": {
-    "updategrammars": "cp -a node_modules/glimmer-syntax-patterns/dist/. syntaxes/"
-  },
-  "categories": [
-    "Languages"
-  ],
-  "icon": "icon.png",
-  "bugs": {
-    "url": "https://github.com/healthsparq/vscode-ember-syntax/issues"
-  },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/healthsparq/vscode-ember-syntax"
-  },
-  "contributes": {
-    "languages": [
-      {
-        "id": "handlebars",
-        "aliases": [
-          "Glimmer",
-          "glimmer"
-        ],
-        "extensions": [
-          ".hbs"
-        ],
-        "configuration": "./language-configuration.json"
-      },
-      {
-        "id": "javascript",
-        "aliases": [
-          "JavaScript (Extended)",
-          "javascript"
-        ],
-        "extensions": [
-          ".js"
-        ],
-        "configuration": "./javascript-language-configuration.json"
-      },
-      {
-        "id": "typescript",
-        "aliases": [
-          "TypeScript (Extended)",
-          "typescript"
-        ],
-        "extensions": [
-          ".ts"
-        ],
-        "configuration": "./javascript-language-configuration.json"
-      }
+    "name": "ember-syntax",
+    "displayName": "Ember Syntax",
+    "description": "Ember HTMLBars and Glimmer syntax highlighting",
+    "version": "0.4.0",
+    "publisher": "dhedgecock",
+    "engines": {
+        "vscode": "^1.10.0"
+    },
+    "scripts": {
+        "updategrammars": "cp -a node_modules/glimmer-syntax-patterns/dist/. syntaxes/"
+    },
+    "categories": [
+        "Languages"
     ],
-    "grammars": [
-      {
-        "language": "handlebars",
-        "scopeName": "source.handlebars",
-        "path": "./syntaxes/Glimmer.tmLanguage.json"
-      },
-      {
-        "language": "javascript",
-        "scopeName": "source.js",
-        "path": "./syntaxes/JavaScriptExtended.tmLanguage.json",
-        "embeddedLanguages": {
-          "meta.source.glimmer": "handlebars"
-        }
-      },
-      {
-        "language": "typescript",
-        "scopeName": "source.ts",
-        "path": "./syntaxes/TypeScriptExtended.tmLanguage.json",
-        "embeddedLanguages": {
-          "meta.source.glimmer": "handlebars"
-        }
-      }
-    ]
-  },
-  "devDependencies": {
-    "glimmer-syntax-patterns": "^1.1.0"
-  }
+    "icon": "icon.png",
+    "bugs": {
+        "url": "https://github.com/healthsparq/vscode-ember-syntax/issues"
+    },
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/healthsparq/vscode-ember-syntax"
+    },
+    "contributes": {
+        "languages": [
+            {
+                "id": "handlebars",
+                "aliases": [
+                    "Glimmer",
+                    "glimmer"
+                ],
+                "extensions": [
+                    ".hbs"
+                ],
+                "configuration": "./language-configuration.json"
+            },
+            {
+                "id": "javascript",
+                "aliases": [
+                    "JavaScript (Extended)",
+                    "javascript"
+                ],
+                "extensions": [
+                    ".js"
+                ],
+                "configuration": "./javascript-language-configuration.json"
+            },
+            {
+                "id": "typescript",
+                "aliases": [
+                    "TypeScript (Extended)",
+                    "typescript"
+                ],
+                "extensions": [
+                    ".ts"
+                ],
+                "configuration": "./javascript-language-configuration.json"
+            }
+        ],
+        "grammars": [
+            {
+                "language": "handlebars",
+                "scopeName": "source.handlebars",
+                "path": "./syntaxes/Glimmer.tmLanguage.json"
+            },
+            {
+                "language": "javascript",
+                "scopeName": "source.js",
+                "path": "./syntaxes/JavaScriptExtended.tmLanguage.json",
+                "embeddedLanguages": {
+                    "meta.source.glimmer": "handlebars"
+                }
+            },
+            {
+                "language": "typescript",
+                "scopeName": "source.ts",
+                "path": "./syntaxes/TypeScriptExtended.tmLanguage.json",
+                "embeddedLanguages": {
+                    "meta.source.glimmer": "handlebars"
+                }
+            }
+        ]
+    },
+    "devDependencies": {
+        "glimmer-syntax-patterns": "^1.1.0"
+    }
 }
