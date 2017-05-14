@@ -30,3 +30,8 @@ there. All VSCode specific configurations are handled in this repository.
 another language. This is done in the `package.json` grammars configs. This is how
 the editor knows to insert Handlebars scoped comments and snippets inside tagged
 templates in JS files.
+
+## Resources
+- https://marketplace.visualstudio.com/items?itemName=ms-vscode.typescript-javascript-grammar
+- https://code.visualstudio.com/docs/extensions/themes-snippets-colorizers
+- https://github.com/sheetalkamat/TypeScript-TmLanguage-VsCode
