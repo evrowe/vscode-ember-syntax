@@ -7,8 +7,8 @@ the way.
 ## Usage
 Grammars exported:
 - Glimmer
-- JavaScript (Babel+Glimmer)
-- TypeScript (Glimmer)
+- JavaScript (Extended)
+- TypeScript (Extended)
 
 ![Screenshot](https://raw.githubusercontent.com/healthsparq/vscode-ember-syntax/master/Example.png)
 
