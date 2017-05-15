@@ -12,6 +12,11 @@ Grammars exported:
 
 ![Screenshot](https://raw.githubusercontent.com/healthsparq/vscode-ember-syntax/master/Example.png)
 
+## Themes
+Looking to customize your colors? See the
+[Panda Extended](https://marketplace.visualstudio.com/items?itemName=dhedgecock.panda-extended)
+theme for examples of available scopeNames.
+
 ## Inline Templates
 It is currently possible to define your component templates in the component files
 using the `layout` property and the `htmlbars-inline-precompile` tool. Welcome to

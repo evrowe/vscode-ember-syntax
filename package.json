@@ -68,7 +68,7 @@
                 "scopeName": "source.js",
                 "path": "./syntaxes/JavaScriptExtended.tmLanguage.json",
                 "embeddedLanguages": {
-                    "meta.source.glimmer": "handlebars"
+                    "meta.source.handlebars.js": "handlebars"
                 }
             },
             {
@@ -76,7 +76,7 @@
                 "scopeName": "source.ts",
                 "path": "./syntaxes/TypeScriptExtended.tmLanguage.json",
                 "embeddedLanguages": {
-                    "meta.source.glimmer": "handlebars"
+                    "meta.source.handlebars.js": "handlebars"
                 }
             }
         ]
