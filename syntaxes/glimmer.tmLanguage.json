@@ -1,6 +1,10 @@
 {
   "$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
   "name": "Glimmer",
+  "scopeName": "source.handlebars",
+  "fileTypes": [
+    "hbs"
+  ],
   "patterns": [
     {
       "include": "#glimmer-unescaped-expression"
@@ -25,15 +29,19 @@
     }
   ],
   "repository": {
-    "string-double-quoted": {
+    "string-double-quoted-handlebars": {
       "name": "string.quoted.double.handlebars",
       "begin": "\"",
       "beginCaptures": {
-        "0": "punctuation.definition.string.begin.handlebars"
+        "0": {
+          "name": "punctuation.definition.string.begin.handlebars"
+        }
       },
       "end": "\"",
       "endCaptures": {
-        "0": "punctuation.definition.string.end.handlebars"
+        "0": {
+          "name": "punctuation.definition.string.end.handlebars"
+        }
       },
       "patterns": [
         {
@@ -42,20 +50,72 @@
         }
       ]
     },
-    "string-single-quoted": {
+    "string-single-quoted-handlebars": {
       "name": "string.quoted.single.handlebars",
       "begin": "'",
       "beginCaptures": {
-        "0": "punctuation.definition.string.begin.handlebars"
+        "0": {
+          "name": "punctuation.definition.string.begin.handlebars"
+        }
       },
       "end": "'",
       "endCaptures": {
-        "0": "punctuation.definition.string.end.handlebars"
+        "0": {
+          "name": "punctuation.definition.string.end.handlebars"
+        }
       },
       "patterns": [
         {
           "name": "constant.character.escape.handlebars",
           "match": "\\\\'"
+        }
+      ]
+    },
+    "string-double-quoted-html": {
+      "name": "string.quoted.double.html.handlebars",
+      "begin": "\"",
+      "beginCaptures": {
+        "0": {
+          "name": "punctuation.definition.string.begin.handlebars"
+        }
+      },
+      "end": "\"",
+      "endCaptures": {
+        "0": {
+          "name": "punctuation.definition.string.end.handlebars"
+        }
+      },
+      "patterns": [
+        {
+          "name": "constant.character.escape.handlebars",
+          "match": "\\\\\""
+        },
+        {
+          "include": "#glimmer-expression"
+        }
+      ]
+    },
+    "string-single-quoted-html": {
+      "name": "string.quoted.single.html.handlebars",
+      "begin": "'",
+      "beginCaptures": {
+        "0": {
+          "name": "punctuation.definition.string.begin.handlebars"
+        }
+      },
+      "end": "'",
+      "endCaptures": {
+        "0": {
+          "name": "punctuation.definition.string.end.handlebars"
+        }
+      },
+      "patterns": [
+        {
+          "name": "constant.character.escape.handlebars",
+          "match": "\\\\'"
+        },
+        {
+          "include": "#glimmer-expression"
         }
       ]
     },
@@ -80,6 +140,12 @@
         }
       },
       "patterns": [
+        {
+          "include": "#string-single-quoted-handlebars"
+        },
+        {
+          "include": "#string-double-quoted-handlebars"
+        },
         {
           "include": "#glimmer-subexp"
         }
@@ -140,10 +206,10 @@
           "include": "#glimmer-subexp"
         },
         {
-          "include": "#string-single-quoted"
+          "include": "#string-single-quoted-handlebars"
         },
         {
-          "include": "#string-double-quoted"
+          "include": "#string-double-quoted-handlebars"
         },
         {
           "include": "#boolean"
@@ -174,10 +240,10 @@
           "include": "#glimmer-subexp"
         },
         {
-          "include": "#string-single-quoted"
+          "include": "#string-single-quoted-handlebars"
         },
         {
-          "include": "#string-double-quoted"
+          "include": "#string-double-quoted-handlebars"
         },
         {
           "include": "#boolean"
@@ -296,10 +362,10 @@
           "include": "#glimmer-expression"
         },
         {
-          "include": "#string-double-quoted"
+          "include": "#string-double-quoted-html"
         },
         {
-          "include": "#string-single-quoted"
+          "include": "#string-single-quoted-html"
         },
         {
           "include": "#html-attribute"
@@ -349,6 +415,5 @@
         }
       ]
     }
-  },
-  "scopeName": "source.handlebars"
+  }
 }
