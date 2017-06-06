@@ -22,6 +22,39 @@ It is currently possible to define your component templates in the component fil
 using the `layout` property and the `htmlbars-inline-precompile` tool. Welcome to
 single file component definitions!
 
+## Emmet
+Emmet will not work with this extension without configuration _(The handlebars
+language id used by this extension does not activate the Emmet extension tab
+completions)_.
+
+The `"emmet.syntaxProfiles"` inside your preferences can be used to notify Emmet to
+include `handlebars` in the list of respected syntaxes:
+
+```javascript
+// settings.json
+{
+  "emmet.syntaxProfiles": { "handlebars": "html" }
+}
+```
+
+You can also configure Emmet to complete using single quotes:
+```javascript
+// settings.json
+{
+  "emmet.syntaxProfiles": {
+    "handlebars": "html",
+    "html": {
+      "attr_quotes": "single"
+    }
+  }
+}
+```
+
+_See the [Emmet syntaxProfiles](https://docs.emmet.io/customization/syntax-profiles/)
+docs for `syntaxProfiles` details. See the
+[HTML Language](https://code.visualstudio.com/docs/languages/html#_emmet-snippets)
+docs for VSCode preferences details._
+
 ## Contributing
 Contributions are welcome! Notes below are intended to help contributers become
 familiar with the repo.
