@@ -120,7 +120,6 @@
       ]
     },
     "boolean": {
-      "comment": "matches booleans in html tags, eg; true",
       "match": "true|false",
       "captures": {
         "0": {
@@ -129,8 +128,12 @@
       },
       "patterns": []
     },
+    "attention": {
+      "name": "storage.type.class.${1:/downcase}",
+      "match": "@?(TODO|FIXME|CHANGED|XXX|IDEA|HACK|NOTE|REVIEW|NB|BUG|QUESTION|TEMP)\\b",
+      "patterns": []
+    },
     "glimmer-unescaped-expression": {
-      "comment": "Capture unescaped expressions of triple curlies",
       "name": "entity.unescaped.expression.handlebars",
       "begin": "{{{",
       "end": "}}}",
@@ -154,14 +157,17 @@
     "glimmer-comment-block": {
       "name": "comment.block.glimmer",
       "begin": "{{!--",
-      "note": "capture group of -- used to handle matching end tag",
       "end": "--}}",
       "captures": {
         "0": {
           "name": "punctuation.definition.block.comment.glimmer"
         }
       },
-      "patterns": []
+      "patterns": [
+        {
+          "include": "#attention"
+        }
+      ]
     },
     "glimmer-comment-inline": {
       "name": "comment.inline.glimmer",
@@ -172,11 +178,15 @@
           "name": "punctuation.definition.block.comment.glimmer"
         }
       },
-      "patterns": []
+      "patterns": [
+        {
+          "include": "#attention"
+        }
+      ]
     },
     "glimmer-expression": {
       "name": "entity.expression.handlebars",
-      "begin": "({{)(#)*(/)*(?:(if|unless|with|each-in|each|else if|else|eq|not-eq|and|or|xor|gt|gte|link-to|lt|lte|is-array|is-equal|action|component|concat|debugger| get|hash|loc|log|mount|mut|outlet|partial|query-params|render|unbound)(?!-)\\b|([a-zA-Z0-9_/.-]+))",
+      "begin": "({{)(#)*(/)*(?:(if|unless|with|each-in|each|else if|else|eq|not-eq|and|or|xor|gt|gte|link-to|lt|lte|is-array|is-equal|action|component|concat|debugger|get|hash|loc|log|mount|mut|outlet|partial|query-params|render|unbound)(?!-)\\b|([a-zA-Z0-9_/.-]+))",
       "end": "(}})",
       "captures": {
         "1": {
@@ -223,7 +233,6 @@
       ]
     },
     "glimmer-subexp": {
-      "comment": "matches any subexpressions within glimmer expressions: {{something someValue=(helper someProp)}}",
       "name": "entity.subexpression.handlebars",
       "begin": "(\\()([a-zA-Z0-9.-]+)",
       "end": "(\\))",
@@ -257,13 +266,11 @@
       ]
     },
     "as-keyword": {
-      "comment": "matches the 'as' when creating params: as |someParam|",
       "name": "support.function.builtin.handlebars",
       "match": "\\s\\b(as)\\b(?=\\s\\|)",
       "patterns": []
     },
     "as-params": {
-      "comment": "Matches the params inside pipes: as |someParam|",
       "name": "keyword.block-params.handlebars",
       "begin": "(?<!\\|)(\\|)",
       "beginCaptures": {
@@ -310,16 +317,18 @@
       "patterns": []
     },
     "html-comment": {
-      "comment": "match on any html comment block eg: <!-- -->",
+      "name": "comment.block.html.handlebars",
       "begin": "<!--",
+      "end": "--\\s*>",
       "captures": {
         "0": {
           "name": "punctuation.definition.comment.html.handlebars"
         }
       },
-      "end": "--\\s*>",
-      "name": "comment.block.html.handlebars",
       "patterns": [
+        {
+          "include": "#attention"
+        },
         {
           "match": "--",
           "name": "invalid.illegal.bad-comments-or-CDATA.html.handlebars"
@@ -327,7 +336,7 @@
       ]
     },
     "html-tag": {
-      "comment": "match any html tag, handle as separate matches on open/close tags",
+      "name": "meta.tag.any.handlebars",
       "begin": "(<\\/?)(([a-zA-Z0-9:-]+))\\b",
       "beginCaptures": {
         "1": {
@@ -346,8 +355,6 @@
           "name": "punctuation.definition.tag.html.handlebars"
         }
       },
-      "name": "meta.tag.any.handlebars",
-      "patternsComment": "The order of includes is IMPORTANT. By including strings BEFORE attributes, we can use a fairly broad regex for matching attributes. Any strings or glimmer expressions should aleady have been matched before hitting that match!",
       "patterns": [
         {
           "include": "#glimmer-unescaped-expression"
@@ -376,7 +383,6 @@
       ]
     },
     "html-attribute": {
-      "comment": "match html attributes and flags id as special attribute, eg: class=",
       "match": "\\s\\b(id)(=)|\\s\\b([a-zA-Z0-9:_.-]+)(=)?",
       "captures": {
         "1": {
@@ -395,9 +401,10 @@
       "patterns": []
     },
     "entities": {
-      "comment": "Eg: &amp;",
       "patterns": [
         {
+          "name": "constant.character.entity.html.handlebars",
+          "match": "(&)([a-zA-Z0-9]+|#[0-9]+|#x[0-9a-fA-F]+)(;)",
           "captures": {
             "1": {
               "name": "punctuation.definition.entity.html.handlebars"
@@ -405,13 +412,11 @@
             "3": {
               "name": "punctuation.definition.entity.html.handlebars"
             }
-          },
-          "match": "(&)([a-zA-Z0-9]+|#[0-9]+|#x[0-9a-fA-F]+)(;)",
-          "name": "constant.character.entity.html.handlebars"
+          }
         },
         {
-          "match": "&",
-          "name": "invalid.illegal.bad-ampersand.html.handlebars"
+          "name": "invalid.illegal.bad-ampersand.html.handlebars",
+          "match": "&"
         }
       ]
     }
