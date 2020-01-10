@@ -33,28 +33,6 @@
           ".hbs"
         ],
         "configuration": "./language-configuration.json"
-      },
-      {
-        "id": "javascript",
-        "aliases": [
-          "JavaScript (Extended)",
-          "javascript"
-        ],
-        "extensions": [
-          ".js"
-        ],
-        "configuration": "./javascript-language-configuration.json"
-      },
-      {
-        "id": "typescript",
-        "aliases": [
-          "TypeScript (Extended)",
-          "typescript"
-        ],
-        "extensions": [
-          ".ts"
-        ],
-        "configuration": "./javascript-language-configuration.json"
       }
     ],
     "grammars": [
@@ -64,19 +42,19 @@
         "path": "./syntaxes/Glimmer.tmLanguage.json"
       },
       {
-        "language": "javascript",
-        "scopeName": "source.js",
-        "path": "./syntaxes/JavaScriptExtended.tmLanguage.json",
+        "path": "./syntaxes/ts-hbs-string-injection.json",
+        "scopeName": "ts-hbs-string.injection",
+        "injectTo": ["source.ts"],
         "embeddedLanguages": {
-          "meta.source.handlebars.js": "handlebars"
+          "meta.embedded.inline.hbs": "handlebars"
         }
       },
       {
-        "language": "typescript",
-        "scopeName": "source.ts",
-        "path": "./syntaxes/TypeScriptExtended.tmLanguage.json",
+        "path": "./syntaxes/js-hbs-string-injection.json",
+        "scopeName": "js-hbs-string.injection",
+        "injectTo": ["source.js"],
         "embeddedLanguages": {
-          "meta.source.handlebars.js": "handlebars"
+          "meta.embedded.inline.hbs": "handlebars"
         }
       }
     ]
